@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
 Build and run the app and you should see the drop-in UI for authentication.
 
-## Add a GraphQL API
+## Adding a GraphQL API
 
 ### Setting Up AppSync
 
