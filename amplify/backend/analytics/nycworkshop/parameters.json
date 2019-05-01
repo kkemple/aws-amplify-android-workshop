@@ -1,0 +1,20 @@
+{
+    "appName": "nycworkshop",
+    "roleName": "pinpointLambdaRolecd4f325d",
+    "cloudWatchPolicyName": "cloudWatchPolicycd4f325d",
+    "pinpointPolicyName": "pinpointPolicycd4f325d",
+    "authPolicyName": "pinpoint_amplify_cd4f325d",
+    "unauthPolicyName": "pinpoint_amplify_cd4f325d",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

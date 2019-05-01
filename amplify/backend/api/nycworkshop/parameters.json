@@ -1,0 +1,10 @@
+{
+    "AppSyncApiName": "nycworkshop",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognito35058c52",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "master": {
+        "awscloudformation": {
+            "AuthRoleName": "nycworkshop-20190501084224-authRole",
+            "UnauthRoleArn": "arn:aws:iam::781155362072:role/nycworkshop-20190501084224-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::781155362072:role/nycworkshop-20190501084224-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "nycworkshop-20190501084224-deployment",
+            "UnauthRoleName": "nycworkshop-20190501084224-unauthRole",
+            "StackName": "nycworkshop-20190501084224",
+            "StackId": "arn:aws:cloudformation:us-east-1:781155362072:stack/nycworkshop-20190501084224/92588ed0-6c0e-11e9-ac4c-0ae81055537e"
+        },
+        "categories": {
+            "auth": {
+                "cognito35058c52": {}
+            }
+        }
+    }
+}
