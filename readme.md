@@ -347,7 +347,6 @@ private GraphQLCall.Callback<CreateTodoMutation.Data> mutationCallback = new Gra
     @Override
     public void onResponse(@Nonnull Response<CreateTodoMutation.Data> response) {
         Log.i("API", "Added Todo - ", response.data.toString());
-        query();
     }
 
     @Override
@@ -355,6 +354,30 @@ private GraphQLCall.Callback<CreateTodoMutation.Data> mutationCallback = new Gra
         Log.e("Error", e.toString());
     }
 };
+
+private void subscribe(){
+    OnCreateTodoSubscription subscription = OnCreateTodoSubscription.builder().build();
+    subscriptionWatcher = mAWSAppSyncClient.subscribe(subscription);
+    subscriptionWatcher.execute(subCallback);
+}
+
+private AppSyncSubscriptionCall.Callback subCallback = new AppSyncSubscriptionCall.Callback() {
+    @Override
+    public void onResponse(@Nonnull Response response) {
+        Log.i("API SUBSCRIPTION", response.data().toString());
+    }
+
+    @Override
+    public void onFailure(@Nonnull ApolloException e) {
+        Log.e("API SUBSCRIPTION", e.toString());
+    }
+
+    @Override
+    public void onCompleted() {
+        Log.i("API SUBSCRIPTION", "Subscription completed");
+    }
+};
+
 
 ```
 
@@ -381,6 +404,8 @@ mAWSAppSyncClient = AWSAppSyncClient.builder()
         }).build();
 
 mutation();
+query();
+subscribe();
 break;
 ```
 

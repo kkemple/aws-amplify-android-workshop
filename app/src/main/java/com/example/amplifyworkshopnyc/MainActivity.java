@@ -40,6 +40,32 @@ public class MainActivity extends AppCompatActivity {
 
     public static PinpointManager pinpointManager;
 
+    private AppSyncSubscriptionCall subscriptionWatcher;
+
+    private void subscribe(){
+        OnCreateTodoSubscription subscription = OnCreateTodoSubscription.builder().build();
+        subscriptionWatcher = mAWSAppSyncClient.subscribe(subscription);
+        subscriptionWatcher.execute(subCallback);
+    }
+
+    private AppSyncSubscriptionCall.Callback subCallback = new AppSyncSubscriptionCall.Callback() {
+        @Override
+        public void onResponse(@Nonnull Response response) {
+            Log.i("API SUBSCRIPTION", response.data().toString());
+        }
+
+        @Override
+        public void onFailure(@Nonnull ApolloException e) {
+            Log.e("API SUBSCRIPTION", e.toString());
+        }
+
+        @Override
+        public void onCompleted() {
+            Log.i("API SUBSCRIPTION", "Subscription completed");
+        }
+    };
+
+
     public static PinpointManager getPinpointManager(final Context applicationContext) {
         if (pinpointManager == null) {
             // Initialize the AWS Mobile Client
@@ -130,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(@Nonnull Response<CreateTodoMutation.Data> response) {
             Log.i("API", "ADD TODO" + response.data().toString());
-            query();
         }
 
         @Override
@@ -171,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
                                 }).build();
 
                         mutation();
+                        query();
+                        subscribe();
                         break;
                     case SIGNED_OUT:
                         showSignIn();
