@@ -346,7 +346,7 @@ public void mutation(){
 private GraphQLCall.Callback<CreateTodoMutation.Data> mutationCallback = new GraphQLCall.Callback<CreateTodoMutation.Data>() {
     @Override
     public void onResponse(@Nonnull Response<CreateTodoMutation.Data> response) {
-        Log.i("API", "Added Todo - ", response.data.toString());
+        Log.i("API", "Added Todo - " + response.data().toString());
     }
 
     @Override
