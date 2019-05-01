@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
 
 Build and run the app and you should see the drop-in UI for authentication.
 
-## Add a GraphQL API
+## Adding a GraphQL API
 
 ### Setting Up AppSync
 
@@ -483,3 +483,7 @@ protected void onDestroy() {
     pinpointManager.getAnalyticsClient().submitEvents();
 }
 ```
+
+## Testing Your App
+
+If you're curious about how to test your Android apps without having to write any code. [Follow this tutorial](https://dev.to/kkemple/how-to-set-up-end-to-end-tests-for-android-with-zero-code-1ka).
